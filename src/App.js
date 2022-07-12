@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import CreateCliente from './components/CreateCliente';
+import ShowClientes from './components/ShowClientes';
+import EditCliente from './components/EditCliente';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Login from './components/Login';
+/* import AuthUser from './components/AuthUser'; */
+
 
 function App() {
+  /* const {getToken} =AuthUser();
+  if(!getToken()){
+    return <Login />
+  } */
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <BrowserRouter>
+        <Routes>
+          <Route path='/' element={ <ShowClientes /> }/>
+          <Route path='/create' element={ <CreateCliente /> }/>
+          <Route path='/edit/:id' element={ <EditCliente /> }/>
+          <Route path='/login' element={ <Login /> }/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
